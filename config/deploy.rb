@@ -42,6 +42,7 @@ set :keep_releases, 5
 set :passenger_restart_with_touch, true
 # namespace :deploy do
 
+# namespace :deploy do
   # after :restart, :clear_cache do
     # on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
