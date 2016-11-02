@@ -81,5 +81,3 @@ test:
 production:
   <<: *default
   database: ebook_production
-  username: ebook
-  password: <%= ENV['EBOOK_DATABASE_PASSWORD'] %>
