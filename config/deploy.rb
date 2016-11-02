@@ -39,16 +39,28 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 
 # Default value for keep_releases is 5
 set :keep_releases, 5
+set :passenger_restart_with_touch, true
+# namespace :deploy do
 
-namespace :deploy do
-
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
+  # after :restart, :clear_cache do
+    # on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
       # within release_path do
       #   execute :rake, 'cache:clear'
       # end
+    # end
+  # end
+
+# end
+
+namespace :deploy do
+  after :restart, :restart_passenger do
+    on roles(:web), in: :groups, limit: 3, wait: 10 do
+      within release_path do
+        execute :touch, 'tmp/restart.txt'
+      end
     end
   end
-
+  after :finishing, 'deploy:restart_passenger'
 end
+
