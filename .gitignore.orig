@@ -12,6 +12,7 @@
 /log/*
 !/log/.keep
 /tmp
+=======
 *.gem
 *.rbc
 /.config
@@ -62,3 +63,4 @@ build-iPhoneSimulator/
 
 # unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
 .rvmrc
+>>>>>>> a18d5d40301a32c461f2659b1094af342677cd2b
